@@ -1,12 +1,30 @@
 import streamlit as st
-import pandas as pd
+import re
 
 st.title("YouTube Insights MVP")
-st.write("Upload your YouTube watch history to get insights.")
+st.write("Paste a YouTube video link to get basic insights.")
 
-uploaded_file = st.file_uploader("Choose your YouTube watch history CSV", type="csv")
+# Input
 
-if uploaded_file:
-    df = pd.read_csv(uploaded_file)
-    st.write("Preview of your watch history:")
-    st.dataframe(df.head())
+video_url = st.text_input("Enter YouTube video URL:")
+
+if video_url:
+# Extract video ID
+match = re.search(r"(?:v=|youtu.be/)([a-zA-Z0-9_-]{11})", video_url)
+if match:
+video_id = match.group(1)
+st.write(f"Video ID: {video_id}")
+
+```
+    # Placeholder for insights
+    st.write("Basic insights could include video title, description, views, etc.")
+    # Example placeholder
+    st.write({
+        "title": "Example Video Title",
+        "views": "1,234,567",
+        "likes": "12,345",
+        "description": "This is a placeholder description."
+    })
+else:
+    st.error("Invalid YouTube URL.")
+```
