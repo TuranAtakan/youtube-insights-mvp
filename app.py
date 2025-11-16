@@ -15,4 +15,13 @@ if video_url:
         st.write(f"Video ID: {video_id}")
 
         # Placeholder for insights
-        st.write("Basic insights could include video title, description, views, e
+        st.write("Basic insights could include video title, description, views, etc.")
+        # Example placeholder
+        st.write({
+            "title": "Example Video Title",
+            "views": "1,234,567",
+            "likes": "12,345",
+            "description": "This is a placeholder description."
+        })
+    else:
+        st.error("Invalid YouTube URL.")
